@@ -48,6 +48,8 @@ def get_last_test_run_status():
 
   found_status = None
   for result in res:
+    if result['commit_branch'] != 'master':
+      continue
     if 'status' not in result:
       continue
     # skip currently building/running tests to return first 'final' result
